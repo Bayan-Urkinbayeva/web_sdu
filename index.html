@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almaty Times</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnMj8Xc5_jA0tqVHCoFHCk-2sHt4imItA&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="files/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body onload="load()">
+    <div class="modal">
+        <div class="modal_content">
+                <div class="form">
+                <img src="https://w7.pngwing.com/pngs/144/238/png-transparent-computer-icons-x-mark-red-symbol-delete-button-miscellaneous-internet-check-mark.png" alt="" id="x_btn" onclick="close_popup()" > 
+                <h2 id="create">Create account</h2>
+                <input type="text" class="inp i1" name="user_name" id="user_name" placeholder="Username">
+                <input type="mail" class="inp i2" name="user_mail" id="user_mail" placeholder="Email">
+                <input type="number" class ="inp i3" name ="user_number" id="user_number" placeholder="Phone number">
+                <input type="password" class="inp i3" name="user_pass" id="user_pass" placeholder="Password" >
+                <p class="p"><input type="checkbox" id="user_check" name="user_check">I have read and accept <a href="#">SOMETHING Terms and Conditions</a></p>
+                <button id="login_btn" onclick="profile(user_name.value, user_mail.value,user_number.value)">Submit</button>
+            </div>
+        </div>
+    </div> 
+    <div class="nav">
+        <label for="toggle">&#9776;</label>
+    </div>
+    <input type="checkbox" id="toggle">
+    <div class="head_2">
+        <ul class="head">
+            <li class="menu m2" onmouseover="size(this)" onmouseout="resize(this)">Home</li>
+            <li class="menu m3" onmouseover="size(this)" onmouseout="resize(this)" id="place_btn"><a href="#food">Places</a></li>
+            <li class="menu m4" onmouseover="size(this)" onmouseout="resize(this)" id="news_btn"><a href="#content">News</a></li>
+            <li class="menu m5" onmouseover="size(this)" onmouseout="resize(this)" id="bottom">Contact</li>
+        </ul>
+    </div>
+    <div onclick="openNav()"><img src="https://www.pngitem.com/pimgs/m/508-5087236_tab-profile-f-user-icon-white-fill-hd.png" alt="" class="prof"></div>
+                <div id="mySidenav" class="sidenav">
+                    <a class="closebtn" onclick="closeNav()">x</a>
+                    <p>Username: </p>
+                    <p id="prof_name"></p>
+                    <p>Email: </p>
+                    <p id="prof_mail"></p>
+                    <p>Phone number:</p>
+                    <p id="prof_number"></p>
+                </div>
+
+    <div class="main">
+        <div class="main_img">
+            <h1 class="main_tit">Almaty Times</h1>
+            <p class="p_tit" >Warm and atmospheric corner for every Almaty citizen</p></br>
+            <hr  class="line" />
+            <button type="button" class="btn btn-outline-light" id="btn2" onclick="sign_in()">Sign in</button>
+
+        </div>
+    </div>
+    <div class="food" id="food">
+        <div class="food_tit">
+            <h1 id="food_h2">Top trending for Almaty</h1>
+            <p id="food_p">Explore some of the best places in the world</p>
+        </div>
+        <div class="trend">
+            <div class="block bl1">
+                <div class="place_img">
+                    <div class="pl_img pl1"></div>
+                </div>
+                <div class="place_info">
+                    <div class="type">
+                        <p style="font-size: 14px; color: black; text-align: center;">RESTAURANTS</p>
+                    </div>
+                    <h4 style="color: whitesmoke;">New Place Restaurant</h4>
+                    <h5 style="color: whitesmoke;">Main Road , No 25/11</h5>
+                    <p class="p2">Fusce urna quam, euismod sit amet mollis quis.</p>
+                    <div class="pl_desc">
+                        <p>Closed now</p>
+                        <p>Open tomorrow at 10:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block bl2">
+                <div class="place_img">
+                    <div class="pl_img pl2"></div>
+                </div>
+                <div class="place_info">
+                    <div class="type">
+                        <p style="font-size: 14px; color:black; text-align: center;">NIGHTLIFE</p>
+                    </div>
+                    <h4 style="color: whitesmoke;">Palace Club</h4>
+                    <h5 style="color: whitesmoke;">Parker Street, No 234/40</h5>
+                    <p class="p2">Fusce urna quam, euismod sit amet mollis quis.</p>
+                    <div class="pl_desc">
+                        <p>Open until at 4:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block bl3">
+                <div class="place_img">
+                    <div class="pl_img pl3"></div>
+                </div>
+                <div class="place_info">
+                    <div class="type">
+                        <p style="font-size: 14px; color:black; text-align: center;">NATURE</p>
+                    </div>
+                    <h4 style="color: whitesmoke;">Big Almaty Lake</h4>
+                    <h5 style="color: whitesmoke;">Alatau mountains, 15 km south</h5>
+                    <p class="p2">Fusce urna quam, euismod sit amet mollis quis.</p>
+                    <div class="pl_desc">
+                        <p>Open unti 22:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block bl4">
+                <div class="place_img">
+                    <div class="pl_img pl4"></div>
+                </div>
+                <div class="place_info">
+                    <div class="type">
+                        <p style="font-size: 14px; color:black; text-align: center;">EVENTS</p>
+                    </div>
+                    <h4 style="color: whitesmoke;">Opera Concert</h4>
+                    <h5 style="color: whitesmoke;"> Parker Street, No 234/40</h5>
+                    <p class="p2">Fusce urna quam, euismod sit amet mollis quis.</p>
+                    <div class="pl_desc">
+                        <p>Closed now</p>
+                        <p>Open tomorrow at 11:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="variants">
+            <div class="ent e1">
+                <div class="rest">
+                    <h4 class="rest_h4">Restaurants</h4>
+                   <a class="rest_a" href= "" >View all</a>
+                </div>
+            </div>
+            <div class="ent e2">
+                <div class="var v1">
+                    <div class="rest">
+                        <h4 class="rest_h4">Nightlife & Clubs</h4>
+                       <a class="rest_a" href= "" >View all</a>
+                    </div>
+                </div>
+                <div class="var v2">
+                    <div class="rest">
+                        <h4 class="rest_h4">Spa & Resorts</h4>
+                       <a class="rest_a" href= "" >View all</a>
+                    </div>
+                </div>
+                <div class="var v3">
+                    <div class="rest">
+                        <h4 class="rest_h4">Hotels</h4>
+                       <a class="rest_a" href= "" >View all</a>
+                    </div>
+                </div>
+                <div class="var v4">
+                    <div class="rest">
+                        <h4 class="rest_h4">Clubs & Pubs </h4>
+                       <a class="rest_a" href= "" >View all</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="content">
+        <h1 class="main_news">The Latest news</h1>
+        <div class="news">
+            <div class="box">
+                <div class="news_img b1" ></div>
+                <div class="news_tit">
+                    <h6 class="tit">COVID-19 widens gulf of global data inequality, while national statistical offices step up to meet new data demands</h6>
+                    <button type="button" class="btn btn-warning">Read more</button>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news_img b2"></div>
+                <div class="news_tit">
+                    <h6 class="tit">COVID-19 widens gulf of global data inequality, while national statistical offices step up to meet new data demands</h6>
+                    <button type="button" class="btn btn-warning">Read more</button>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news_img b3"></div>
+                <div class="news_tit">
+                    <h6 class="tit">COVID-19 widens gulf of global data inequality, while national statistical offices step up to meet new data demands</h6>
+                    <button type="button" class="btn btn-warning">Read more</button>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news_img b4"></div>
+                <div class="news_tit">
+                    <h6 class="tit">COVID-19 widens gulf of global data inequality, while national statistical offices step up to meet new data demands</h6>
+                    <button type="button" class="btn btn-warning">Read more</button>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news_img b5"></div>
+                <div class="news_tit">
+                    <h6 class="tit">COVID-19 widens gulf of global data inequality, while national statistical offices step up to meet new data demands</h6>
+                    <button type="button" class="btn btn-warning">Read more</button>
+                </div>
+            </div>
+            <div class="box">
+                <div class="news_img b6"></div>
+                <div class="news_tit">
+                    <h6 class="tit">COVID-19 widens gulf of global data inequality, while national statistical offices step up to meet new data demands</h6>
+                    <button type="button" class="btn btn-warning">Read more</button>
+                </div>
+            </div>
+        </div>
+        <!--<div class="you_tube">
+            <div class="v_1">
+                <iframe width="600" height="400" src="https://www.youtube.com/embed/9_DFSppBKFM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="v_1">
+                <iframe width="700" height="400" src="https://www.youtube.com/embed/bAsJoABPjyM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="v_1">
+                <iframe width="700" height="400" src="https://www.youtube.com/embed/O0gSpVu-xkM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>-->
+    </div>
+    </div>
+    <script>
+        let map;
+  
+        function initMap() {
+            
+            var options = {
+                center:{
+                    lat:43.2220, lng:76.8512
+                }, 
+                zoom:12
+            }
+          map = new google.maps.Map(document.getElementById("map"), options);
+          var icon = {
+              url:"img/iconm1.png",
+              scaledSize: new google.maps.Size(30,30),
+
+          }
+          var marker = new google.maps.Marker({
+              position: {lat:43.23355742968276, lng: 76.95679813991896},
+              map:map,
+              icon: icon
+          })
+          var marker2 = new google.maps.Marker({
+              position: {lat:43.21932101638762, lng: 76.9279241920498},
+              map:map,
+              icon: icon
+          })
+          var marker3 = new google.maps.Marker({
+              position: {lat: 43.24833057853327, lng: 76.87258725311727},
+              map:map,
+              icon: icon
+          })
+          var str1 = '<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h5 id="firstHeading" class="firstHeading">Мы здесь</h5>'+
+          '<div id="bodyContent">'+'<p>Наш филиал рядом с Достык Плаза! Ждем вас!</p>'+'</div>'+'</div>';
+          var str2 = '<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h5 id="firstHeading" class="firstHeading">Наш второй филиал</h5>'+
+          '<div id="bodyContent">'+'<p>Наш новый филиал на Толе би! Ждем вас!</p>'+'</div>'+'</div>';
+          var str3='<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h5 id="firstHeading" class="firstHeading">Наш временный адрес</h5>'+
+          '<div id="bodyContent">'+'<p>Наш временный адрес! Ждем вас!</p>'+'</div>'+'</div>';
+var infowindow1 = new google.maps.InfoWindow({
+     content: str1,
+     maxWidth: 400
+});
+var infowindow2 = new google.maps.InfoWindow({
+     content: str2,
+     maxWidth: 400
+});
+var infowindow3 = new google.maps.InfoWindow({
+     content: str3,
+     maxWidth: 400
+});
+marker.addListener('click', function() {
+     infowindow1.open(map, marker);
+});
+marker2.addListener('click', function() {
+     infowindow2.open(map, marker2);
+});
+marker3.addListener('click', function() {
+     infowindow3.open(map, marker3);
+});
+const pathCoordinates = [
+          { lat:43.23355742968276, lng: 76.95679813991896 },
+          { lat:43.21932101638762, lng: 76.9279241920498 },
+          { lat: 43.24833057853327, lng: 76.87258725311727 },
+        ];
+        const path = new google.maps.Polyline({
+          path: pathCoordinates,
+          geodesic: true,
+          strokeColor: "rgb(34, 32, 32)",
+          strokeOpacity: 1.0,
+          strokeWeight: 2,
+        });
+        path.setMap(map);
+        }
+        
+      </script>
+      <div class="maps">
+        <p id="p_map">Our address on Google Maps</p>
+        <div id="map"></div>
+    </div>
+    <div class="footer">
+    <div class="con_tact">
+        <div class="about_us">
+            <h4>Contact info</h4>
+    <p style="font-size: 17px;line-height: 30px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium </br>doloremque laudantium, totam rem aperiam.
+        Sed ut perspiciatis unde omnis</br> iste natus error sit voluptatem accusantium doloremque la udantium, totam
+                    </br> rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto </br>beatae 
+                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia.</p>
+                <strong>The Company Name Inc.</br>
+                    9870 St Vincent Place,</br>
+                    Glasgow, DC 45 Fr 45.</strong>
+                <p style="margin: 0 auto;">Telephone: +1 800 603 6035</br>
+                    FAX: +1 800 889 9898</br>
+                    E-mail: almaty_times@gmail.com</p>
+            <hr class="lin_e">
+        </div>
+        <div class="com">
+        <h4>Get in touch</h4>
+        <p>If you have any questions, just write down, and we will answer you shortly.</p>
+       <input type="text" id="coment" placeholder="Write your problem">
+        <button id="pol"class="btn btn-outline-light">Send</button>
+    </div>
+    </div>
+    <p id="privacy_pol">2020 (c) Almaty_times. All rights reserved Privacy Policy.</p>
+    </div>
+    <script src="files/javas.js"></script>
+</body>
+</html>
