@@ -164,7 +164,15 @@ li{
     background-color: peru;
     margin-left: 201px;
 }
-
+@media(max-width: 1250px){
+      .ent{
+          height: 500px;
+      }
+      .var{
+          height: 300px;
+          width: 300px;
+      }
+  }
 .pl_desc{
     display: flex;
     justify-content: space-evenly;
